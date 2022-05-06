@@ -1,8 +1,15 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import CustomLink from '../../CustomLink/CustomLink';
 import './NavHead.css'
 const NavHead = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const handelSignOut = ()=>{
+    signOut(auth);
+  }
     return (
         <div>
             <nav>
@@ -21,8 +28,15 @@ const NavHead = () => {
             </div>
             <div className="col-md-6">
                 <ul className='d-flex gap-4 justify-content-center align-items-center mb-0 p-2'>
-                <Link className='list-unstyled' to="/login"> <i className="fa fa-sign-in"></i> Log in</Link>
-                <Link className='list-unstyled' to="/register"> <i className="fa fa-unlock"></i> Register</Link>
+                
+                {  user? 
+                  <button className='btn btn-link text-white' onClick={handelSignOut}>
+                  <i className="fa fa-sign-out"></i>
+                  SignOut</button>
+                :
+                  <Link className='list-unstyled text-white' to="/login"> <i className="fa fa-sign-in"></i> Log in</Link>
+                  }
+                <Link className='list-unstyled text-white' to="/register"> <i className="fa fa-unlock"></i> Register</Link>
                 
                 </ul>
             </div>

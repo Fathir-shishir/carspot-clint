@@ -5,18 +5,14 @@ import { Button, Form } from 'react-bootstrap';
 import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 
 
 const Login = () =>  {
     const [email,setEmail]= useState('')
     const [password,setPassword]= useState('')
-    const location = useLocation()
-    const navigate = useNavigate()
-    let from = location.state?.from?.pathname || "/";
     const [user1] = useAuthState(auth);
-    const [sendPasswordResetEmail, sending, eError] = useSendPasswordResetEmail(
-      auth
-    );
+    const navigate = useNavigate();
     const [
         signInWithEmailAndPassword,
         user,
@@ -24,15 +20,9 @@ const Login = () =>  {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
-      if(user1){
-        navigate(from, { replace: true });
-        console.log(user1.email)
-    }
-    const resetPassword =(event)=>{
-      if(email){
-        sendPasswordResetEmail(email)
-        Toast("Email send!")
-      }
+      if(user){
+        navigate('/home')
+        
     }
  const handelEmailOnblur =(event)=>{
     setEmail(event.target.value)
@@ -60,7 +50,9 @@ const Login = () =>  {
     Submit
   </Button>
 </Form>
+<SocialLogin></SocialLogin>
         </div>
+        
     );
 };
 

@@ -1,6 +1,7 @@
 import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import { useState } from 'react';
 import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 
 const Register = () =>  {
@@ -10,6 +11,7 @@ const Register = () =>  {
   const [confirmpassword,setConfirmpassword] = useState('')
   const [isChecked,setChecked] = useState(false)
   const [checkpasseword,setcheckpasseword] = useState('')
+  const navigate = useNavigate();
   
   const [sendEmailVerification, sending, error] = useSendEmailVerification(
     auth
@@ -55,6 +57,9 @@ const Register = () =>  {
        
       
      }
+     if (user) {
+      navigate('/home')
+    }
 
     return (
         <div className=''>
