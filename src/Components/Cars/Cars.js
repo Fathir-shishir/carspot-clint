@@ -33,7 +33,7 @@ const Cars = () => {
             products && products.length > 0 ? 
             products.map(product =>
             <tr>
-                <td>{product.id}</td>
+                <td>{product._id}</td>
                 <td>{product.name}</td>
                 <td><img src={product.picture} alt="" /></td>
                 <td>{product.price}</td>

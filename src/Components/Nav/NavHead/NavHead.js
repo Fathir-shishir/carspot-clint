@@ -7,6 +7,7 @@ import CustomLink from '../../CustomLink/CustomLink';
 import './NavHead.css'
 const NavHead = () => {
   const [user, loading, error] = useAuthState(auth);
+  
   const handelSignOut = ()=>{
     signOut(auth);
   }
@@ -30,13 +31,14 @@ const NavHead = () => {
                 <ul className='d-flex gap-4 justify-content-center align-items-center mb-0 p-2'>
                 
                 {  user? 
-                  <button className='btn btn-link text-white' onClick={handelSignOut}>
+                  <button className='btn btn-link text-white text-decoration-none' onClick={handelSignOut}>
                   <i className="fa fa-sign-out"></i>
-                  SignOut</button>
+                  SignOut <span className='ml-2'>({user.displayName})</span>
+                  </button>
                 :
                   <Link className='list-unstyled text-white' to="/login"> <i className="fa fa-sign-in"></i> Log in</Link>
                   }
-                <Link className='list-unstyled text-white' to="/register"> <i className="fa fa-unlock"></i> Register</Link>
+                <Link className='list-unstyled text-white text-decoration-none'  to="/register"> <i className="fa fa-unlock"></i> Register</Link>
                 
                 </ul>
             </div>

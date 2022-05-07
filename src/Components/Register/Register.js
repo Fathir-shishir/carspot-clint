@@ -1,7 +1,8 @@
-import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { useState } from 'react';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
+import { updatePassword } from 'firebase/auth';
 
 
 const Register = () =>  {
@@ -12,9 +13,9 @@ const Register = () =>  {
   const [isChecked,setChecked] = useState(false)
   const [checkpasseword,setcheckpasseword] = useState('')
   const navigate = useNavigate();
-  
+  const [updateProfile, updating, error1] = useUpdateProfile(auth);
   const [sendEmailVerification, sending, error] = useSendEmailVerification(
-    auth
+    auth,{sendEmailVerification:true}
   );
   
   const [
@@ -42,11 +43,12 @@ const Register = () =>  {
      }
    
   
-     const handleSubmitForm=(event)=>{
+     const handleSubmitForm= async(event)=>{
        event.preventDefault()
        if( password === confirmpassword ){
-        createUserWithEmailAndPassword(email, password)
-        
+      await  createUserWithEmailAndPassword(email, password)
+      await updateProfile({ displayName : name });
+      alert('Updated profile');  
         
         
        }
@@ -59,6 +61,7 @@ const Register = () =>  {
      }
      if (user) {
       navigate('/home')
+      console.log(user)
     }
 
     return (

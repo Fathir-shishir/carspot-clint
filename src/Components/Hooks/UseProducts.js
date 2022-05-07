@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const UseProducts = () => {
     const[products,setProducts]= useState([])
     useEffect(()=>{
-        fetch('feedback.json')
+        fetch('http://localhost:5000/service')
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
