@@ -11,6 +11,7 @@ import NavBar from './Components/Nav/NavBar/NavBar';
 import NavHead from './Components/Nav/NavHead/NavHead';
 import NotFound from './Components/NotFound/NotFound';
 import Register from './Components/Register/Register';
+import RequireAuth from './Components/RequireAuth/RequireAuth';
 import RestockItem from './Components/ReStock/RestockItem';
 import StockUpdate from './StockUpdate/StockUpdate';
 
@@ -29,8 +30,12 @@ function App() {
         <Route path="/register" element={<Register></Register>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="*" element={<NotFound></NotFound>} />
-        <Route path="/addItems" element={<AddItems></AddItems>} />
-        <Route path="/myitems" element={<MyItems></MyItems>} />
+        <Route path="/addItems" element={<RequireAuth>
+          <AddItems></AddItems>
+        </RequireAuth>} />
+        <Route path="/myitems" element={<RequireAuth>
+          <MyItems></MyItems>
+        </RequireAuth>} />
         <Route path="/stockupdate/:id" element={<StockUpdate></StockUpdate>} />
         <Route path="/update/:id" element={<RestockItem></RestockItem>} />
       </Routes>

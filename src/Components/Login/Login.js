@@ -13,7 +13,9 @@ const Login = () =>  {
     const [email,setEmail]= useState('')
     const [password,setPassword]= useState('')
     const [user1] = useAuthState(auth);
+    const location = useLocation()
     const navigate = useNavigate();
+    let from = location.state?.from?.pathname || "/";
   
     const [
         signInWithEmailAndPassword,
@@ -25,7 +27,7 @@ const Login = () =>  {
       const [token]=useToken(user);
 
       if(token){
-        navigate('/home')
+        navigate(from, { replace: true });
         
     }
  const handelEmailOnblur =(event)=>{
