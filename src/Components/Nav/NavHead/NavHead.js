@@ -3,7 +3,6 @@ import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import CustomLink from '../../CustomLink/CustomLink';
 import './NavHead.css'
 const NavHead = () => {
   const [user, loading, error] = useAuthState(auth);
