@@ -3,6 +3,7 @@ import { useState } from 'react';
 import auth from '../../firebase.init';
 import { useNavigate } from 'react-router-dom';
 import { updatePassword } from 'firebase/auth';
+import useToken from '../useToken/useToken';
 
 
 const Register = () =>  {
@@ -13,10 +14,11 @@ const Register = () =>  {
   const [isChecked,setChecked] = useState(false)
   const [checkpasseword,setcheckpasseword] = useState('')
   const navigate = useNavigate();
+
   const [updateProfile, updating, error1] = useUpdateProfile(auth);
-  const [sendEmailVerification, sending, error] = useSendEmailVerification(
-    auth,{sendEmailVerification:true}
-  );
+  // const [sendEmailVerification, sending, error] = useSendEmailVerification(
+  //   auth,{sendEmailVerification:true}
+  // );
   
   const [
     createUserWithEmailAndPassword,
@@ -24,6 +26,7 @@ const Register = () =>  {
     loading,
     Eerror,
   ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
+  const [token]=useToken(user);
   
      const handelNameOnblur =(event)=>{
       setName(event.target.value)
@@ -59,7 +62,7 @@ const Register = () =>  {
        
       
      }
-     if (user) {
+     if (token) {
       navigate('/home')
       console.log(user)
     }

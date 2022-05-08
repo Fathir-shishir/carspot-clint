@@ -18,6 +18,9 @@ const Cars = () => {
         dataField: 'image',
         text: 'Image'
       }];
+    const handelDelete =()=>{
+
+      }
     
     
     return (
@@ -28,6 +31,7 @@ const Cars = () => {
                <th>NAME</th>
                <th> Image</th>
                <th>PRICE</th>
+               <th>Delete</th>
            </tr>
            {
             products && products.length > 0 ? 
@@ -37,6 +41,7 @@ const Cars = () => {
                 <td>{product.name}</td>
                 <td><img src={product.picture} alt="" /></td>
                 <td>{product.price}</td>
+                <td><button onClick={()=>handelDelete(product._id)}>Delete</button></td>
             </tr>
             )  : 'Loading' 
            }

@@ -6,6 +6,7 @@ import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword 
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import useToken from '../useToken/useToken';
 
 
 const Login = () =>  {
@@ -13,6 +14,7 @@ const Login = () =>  {
     const [password,setPassword]= useState('')
     const [user1] = useAuthState(auth);
     const navigate = useNavigate();
+  
     const [
         signInWithEmailAndPassword,
         user,
@@ -20,7 +22,9 @@ const Login = () =>  {
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
-      if(user){
+      const [token]=useToken(user);
+
+      if(token){
         navigate('/home')
         
     }

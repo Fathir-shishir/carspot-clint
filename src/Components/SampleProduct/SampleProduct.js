@@ -1,9 +1,14 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const SampleProduct = ({product}) => {
+  const navigate = useNavigate();
     console.log(product)
     const {_id,name,price,picture,description}=product
+    const redirectStock = (id)=>{
+      navigate(`/stockupdate/${id}`)
+    }
     return (
         <div >
         <Card>
@@ -15,7 +20,7 @@ const SampleProduct = ({product}) => {
         {description}
       </Card.Text>
     </Card.Body>
-    <button  className='btn btn-primary'>Sotck Update</button>
+    <button onClick={()=> redirectStock(_id)}  className='btn btn-primary'>Sotck Update</button>
   </Card>
             
         </div>

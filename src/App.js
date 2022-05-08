@@ -6,6 +6,7 @@ import Cars from './Components/Cars/Cars';
 import Footer from './Components/Footer/Footer';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
+import MyItems from './Components/MyItems/MyItems';
 import NavBar from './Components/Nav/NavBar/NavBar';
 import NavHead from './Components/Nav/NavHead/NavHead';
 import NotFound from './Components/NotFound/NotFound';
@@ -27,8 +28,9 @@ function App() {
         <Route path="/register" element={<Register></Register>} />
         <Route path="/login" element={<Login></Login>} />
         <Route path="*" element={<NotFound></NotFound>} />
-        <Route path="addItems" element={<AddItems></AddItems>} />
-        <Route path="stockUpdate" element={<StockUpdate></StockUpdate>} />
+        <Route path="/addItems" element={<AddItems></AddItems>} />
+        <Route path="/myitems" element={<MyItems></MyItems>} />
+        <Route path="/stockupdate/:id" element={<StockUpdate></StockUpdate>} />
       </Routes>
       <Footer></Footer>
     </div>

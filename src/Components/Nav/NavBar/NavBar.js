@@ -15,6 +15,7 @@ const NavBar = () => {
                             <CustomLink className='list-unstyled' to="/cars">CARS</CustomLink>
                             <CustomLink className=' list-unstyled' to="/addItems">ADD ITEMS</CustomLink>
                             <CustomLink className=' list-unstyled' to="/about">ABOUT</CustomLink>
+                            <CustomLink className=' list-unstyled' to="/myitems">MyItems</CustomLink>
 
                         </ul>
                     </div>
