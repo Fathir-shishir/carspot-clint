@@ -10,7 +10,7 @@ const About = () => {
             <Card className='mx-auto mt-5' style={{ width: '25%' }}>
   <Card.Img variant="top" src={user?.photoURL} />
   <Card.Body>
-    <Card.Title>{user?.displayName}</Card.Title>
+    <Card.Title> UserName : {user?.displayName}</Card.Title>
     <Card.Title>Email :{user?.email}</Card.Title>
     
     
