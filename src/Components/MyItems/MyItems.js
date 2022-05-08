@@ -74,12 +74,12 @@ const MyItems = () => {
           </tr>
           {items.map((item) => {
             return (
-              <tr key={item._id}>
-                <td>{item.name}</td>
-                <td>{item.picture}</td>
-                <td>{item.description}</td>
-                <td>{item.price}</td>
-                <td>{item.quantity}</td>
+              <tr key={item?._id}>
+                <td>{item?.name}</td>
+                <td>{item?.picture}</td>
+                <td>{item?.description}</td>
+                <td>{item?.price}</td>
+                <td>{item?.quantity}</td>
                 
                 <button className='m-3' onClick={() => handleDelete(item._id)}>
                Delete
