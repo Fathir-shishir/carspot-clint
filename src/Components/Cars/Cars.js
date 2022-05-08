@@ -27,7 +27,7 @@ const Cars = () => {
     
         const proceed = window.confirm("Are you sure want to delete?");
         if (proceed) {
-        fetch(`http://localhost:5000/service/${id}`, {
+        fetch(`https://aqueous-eyrie-63184.herokuapp.com/service/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -40,7 +40,7 @@ const Cars = () => {
       };
       const deliveredQuantity=(id)=>{
         const updatedQuantity={newDeliver};
-        const url=`http://localhost:5000/restock/${id}`;
+        const url=`https://aqueous-eyrie-63184.herokuapp.com/restock/${id}`;
             fetch(url,{
                 method:"PUT",
                 headers:{
@@ -63,10 +63,12 @@ const Cars = () => {
            <tr className='p-4'>
               <th>ID</th>
                <th>NAME</th>
+               <th>Supplier Name</th>
                <th> Image</th>
                <th>PRICE</th>
                <th>quantity</th>
                <th>Delete</th>
+               
                
            </tr>
            {
@@ -75,7 +77,8 @@ const Cars = () => {
             <tr>
                 <td>{product._id}</td>
                 <td>{product.name}</td>
-                <td><img src={product.picture} alt="" /></td>
+                <td>{product.supplierName}</td>
+                <td><img className='img' src={product.picture} alt="" /></td>
                 <td>{product.price}</td>
                 <td>{product.quantity}</td>
 

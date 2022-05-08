@@ -5,7 +5,7 @@ const useProductsDetails = () => {
     const{id}= useParams()
     const [producDetails,setProductsDetails]= useState({})
     useEffect(()=>{
-        fetch(`http://localhost:5000/service/${id}`)
+        fetch(`https://aqueous-eyrie-63184.herokuapp.com/service/${id}`)
         .then ((res)=>res.json())
         .then((data)=>setProductsDetails(data))
     },[id])

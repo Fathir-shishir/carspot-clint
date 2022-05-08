@@ -22,9 +22,7 @@ const NavHead = () => {
               <li className='list-unstyled'>
               <i className="fa fa-heart-o text-decoration-none" aria-hidden="true"/> About
               </li>
-              <li className='list-unstyled'>
-              <i className="fa fa-folder-open-o" aria-hidden="true"></i> FAQS
-              </li>
+              <Link className='list-unstyled text-white' to="/blogs"> <i className="fa fa-folder-open-o"></i> Blogs</Link>
             </ul>
             </div>
             <div className="col-md-6">

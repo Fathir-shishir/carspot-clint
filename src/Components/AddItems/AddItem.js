@@ -14,7 +14,7 @@ const AddItem = () => {
   
 
     //send data to server
-    const url = `http://localhost:5000/service`;
+    const url = `https://aqueous-eyrie-63184.herokuapp.com/service`;
     fetch(url,{
       method: "POST",
       headers: {
