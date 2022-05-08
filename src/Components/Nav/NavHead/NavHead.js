@@ -19,9 +19,9 @@ const NavHead = () => {
           
             <div className="col-md-6  ">
             <ul className='d-flex gap-4 justify-content-center align-items-center mb-0 p-2'>
-              <li className='list-unstyled'>
+              <Link to="/about" className='list-unstyled'>
               <i className="fa fa-heart-o text-decoration-none" aria-hidden="true"/> About
-              </li>
+              </Link>
               <Link className='list-unstyled text-white' to="/blogs"> <i className="fa fa-folder-open-o"></i> Blogs</Link>
             </ul>
             </div>
